@@ -101,11 +101,11 @@ h1 {
   content: "—";
 }
 
-.citation {
+.citation, .season {
   font-style: italic;
 }
 
-.citation:before {
+.season:before {
   content: ", ";
   font-style: normal;
 }
