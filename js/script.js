@@ -16,7 +16,8 @@ const quotes = [
     quote: 'Get a friend, loser.',
     source: 'Dwight Shrute',
     citation: 'Customer Survey',
-    year: 'Season 5 (2008)'
+    season: 'Season 5',
+    year: '2008'
   },
   {
     quote: "I'm about to do something very bold in this job that I've never done before...try",
@@ -60,26 +61,31 @@ function getRandomQuote() {
   return quote;
 }
 
+function getColor() {
+  let color = Math.floor(Math.random() * 256);
+  return color.toString();
+}
+
+
 
 /***
  * `printQuote` function
 ***/
 function printQuote() {
   let randomQuote = getRandomQuote();
-  let quoteHTML = '<p class = "quote">' + randomQuote.quote + '</p> ' +
-                  '<p class = "source">' + randomQuote.source + 
-                      ' <span class = "season">' + randomQuote.season + ':</span> ' +
-                      '<span class = "citation">' + randomQuote.citation + '</span>' +
-                      ' <span class = "year">' + randomQuote.year + '</span>' +
-                      '</p>';
+  let quoteHTML = `
+                  <p class = "quote">${randomQuote.quote}</p>
+                  <p class = "source">${randomQuote.source}
+                      <span class = "season">${randomQuote.season}:</span>
+                      <span class = "citation">${randomQuote.citation}</span>
+                      <span class = "year">${randomQuote.year}</span>
+                  </p>
+                      `;
   let quoteBox = document.getElementById('quote-box');
   quoteBox.innerHTML = quoteHTML;
   
   // Create Random Background
-  let red = Math.floor(Math.random() * 256);
-  let green = Math.floor(Math.random() * 256);
-  let blue = Math.floor(Math.random() * 256);
-  let randomColor = "rgb("+ red +", "+ green +", "+ blue +")"
+  let randomColor = `rgb(${getColor()}, ${getColor()}, ${getColor()})`;
   let body = document.getElementsByTagName('body');
   body[0].style.background = randomColor;
 }
